@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Format</title>
+    <meta charset="utf-8" />
+    <style>
+    </style>
+    <script language="javascript" type="text/javascript">
+
+        function curDate() {
+            var date = new Date();
+            var month =("0" + (date.getMonth()+1)).slice(-2);
+            var day = ("0" + date.getDate()).slice(-2);
+            var year = date.getUTCFullYear(); 
+            var dateSet1 = (month + "-" + day + "-" + year);
+            var dateSet2 = (month + "/" + day + "/" + year);
+            var dateSet3 = (day + "/" + month + "/" + year);
+            
+            document.getElementById('placement').innerHTML = (dateSet1 + "<br>" + dateSet2 + "<br>" + dateSet3);
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Displaying 3 sets of Dates:</h1>
+    <br />
+
+    <button type="button" onclick="curDate()">
+        Display 3 set of dates in different formats.
+    </button><br />
+    <p><b>Today is: <br /></b></p>
+    <p id="placement">Set 1<br />Set 2<br />Set 3</p>.<br />
+</body>
+</html>
