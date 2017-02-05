@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Editing</title>
+    <meta charset="utf-8" />
+    <style>
+    </style>
+    <script language="javascript" type="text/javascript">
+
+        var table;
+        var rowN;
+        var columnN;
+        var curNumRow;
+        var newText;
+
+        function addRow() {
+            table = document.getElementById("myTable");
+            curNumRow = document.getElementById("myTable").rows.length;
+			curNumRow++;
+			var row = table.insertRow(-1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			cell1.innerHTML = ("Row" + curNumRow +" cell1");
+			cell2.innerHTML = ("Row" + curNumRow +" cell2");
+        }
+
+        function submitInfo() {
+            table = document.getElementById("myTable");
+            newText = document.getElementById('cell').value;
+            var xRow = table.rows[rowN - 1];
+
+            var reCell = xRow.cells(columnN - 1);
+            reCell.innerHTML = (newText);
+            document.getElementById('placement').innerHTML = ("Sucessful: <br>" + "'" + newText +
+                "' was added successfully to <b>Row #: </b><u>  " + rowN + " </u><b>  , Column #: </b><u>  " + columnN + "  </b></u>");
+
+
+        }
+
+        function editTableA() {
+            table = document.getElementById("myTable");
+            document.getElementById('placement').innerHTML = ("Enter row number to edit: <input type='text' id='row' value='' />" +
+            "<button type='button' onclick='editTableB()'>Submit</button>");            
+        }
+
+        function editTableB() {
+            rowN = document.getElementById('row').value;
+            curNumRow = document.getElementById("myTable").rows.length;
+            if (0 < rowN && rowN <= curNumRow) {
+                document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br><br>Enter column 1 or column 2 to edit:" +
+                    " <input type='text' id='column' value='' />" +
+                    "<button type='button' onclick='editTableC()'>Submit</button>");
+
+            }
+            
+            else {
+                document.getElementById('placement').innerHTML = "Row Selected: " + rowN + "<br><br>The row you have entered does not exist, retry from the start."
+            }
+
+            
+
+        }
+        function editTableC() {
+            columnN = document.getElementById('column').value;           
+            if (columnN == 1) {
+                document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br>Column Selected: " + columnN + "<br>" +
+                    "Enter text to be edited in cell: <input type='text' id='cell' value='' />" +
+                    "<button type='button' onclick='submitInfo()'>Submit</button>");
+            }
+
+            else if (columnN == 2) {
+                document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br>Column Selected: " + columnN + "<br>" +
+                    "Enter text to be edited in cell: <input type='text' id='cell' value='' />" +
+                    "<button type='button' onclick='submitInfo()'>Submit</button>");
+            }
+            
+            else {
+                document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br>Enter in the correct column again" +
+                    "<br><br>Enter column 1 or column 2 to edit:" +
+                    " <input type='text' id='column' value='' />" +
+                    "<button type='button' onclick='editTableC()'>Submit</button>");
+            }
+            
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Editing An Existing Table</h1>
+    <br />
+    <table id="myTable" border="1">
+        <tr>
+            <td>Row1 cell1</td>
+            <td>Row1 cell2</td>
+        </tr>
+        <tr>
+            <td>Row2 cell1</td>
+            <td>Row2 cell2</td>
+        </tr>
+        <tr>
+            <td>Row3 cell1</td>
+            <td>Row3 cell2</td>
+        </tr>
+
+    </table>
+    <br>
+    <br>
+    <p><b>This button will add a new row to the table above and number it correctly.</b></p>
+    <button type="button" onclick="addRow()">
+        Add A New Row
+    </button><br /><br /><br />
+    <p><b>This button will allow the user to select a row and a column and edit the content within the cell.</b></p>
+    <button type="button" onclick="editTableA()">
+        Edit the Table
+    </button><br /><br /><br />
+    <p id="placement"></p>
+</body>
+</html>
