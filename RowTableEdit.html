@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Table Editing</title>
@@ -31,8 +31,8 @@
 
             var reCell = xRow.cells(columnN - 1);
             reCell.innerHTML = (newText);
-            document.getElementById('placement').innerHTML = ("Sucessful: <br>" + "'" + newText +
-                "' was added successfully to <b>Row #: </b><u>  " + rowN + " </u><b>  , Column #: </b><u>  " + columnN + "  </b></u>");
+            document.getElementById('placement').innerHTML = ("<b>Sucessful: <br>" + "'" + newText +
+                "'</b> was added successfully to <b>Row #: </b><u>  " + rowN + " </u><b>  , Column #: </b><u>  " + columnN + "  </b></u>");
 
 
         }
@@ -40,7 +40,7 @@
         function editTableA() {
             table = document.getElementById("myTable");
             document.getElementById('placement').innerHTML = ("Enter row number to edit: <input type='text' id='row' value='' />" +
-            "<button type='button' onclick='editTableB()'>Submit</button>");            
+            "<button type='button' onclick='editTableB()'>Submit</button>");
         }
 
         function editTableB() {
@@ -52,16 +52,16 @@
                     "<button type='button' onclick='editTableC()'>Submit</button>");
 
             }
-            
+
             else {
                 document.getElementById('placement').innerHTML = "Row Selected: " + rowN + "<br><br>The row you have entered does not exist, retry from the start."
             }
 
-            
+
 
         }
         function editTableC() {
-            columnN = document.getElementById('column').value;           
+            columnN = document.getElementById('column').value;
             if (columnN == 1) {
                 document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br>Column Selected: " + columnN + "<br>" +
                     "Enter text to be edited in cell: <input type='text' id='cell' value='' />" +
@@ -73,14 +73,14 @@
                     "Enter text to be edited in cell: <input type='text' id='cell' value='' />" +
                     "<button type='button' onclick='submitInfo()'>Submit</button>");
             }
-            
+
             else {
                 document.getElementById('placement').innerHTML = ("Row Selected: " + rowN + "<br>Enter in the correct column again" +
                     "<br><br>Enter column 1 or column 2 to edit:" +
                     " <input type='text' id='column' value='' />" +
                     "<button type='button' onclick='editTableC()'>Submit</button>");
             }
-            
+
         }
 
     </script>
@@ -101,7 +101,6 @@
             <td>Row3 cell1</td>
             <td>Row3 cell2</td>
         </tr>
-
     </table>
     <br>
     <br>
@@ -112,7 +111,7 @@
     <p><b>This button will allow the user to select a row and a column and edit the content within the cell.</b></p>
     <button type="button" onclick="editTableA()">
         Edit the Table
-    </button><br /><br /><br />
+    </button><br /><br />
     <p id="placement"></p>
 </body>
 </html>
